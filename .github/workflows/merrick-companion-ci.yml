@@ -1,0 +1,35 @@
+name: MERRICK Companion CI
+
+on:
+  pull_request:
+    paths:
+      - "openclaw/plugins/merrick-companion/**"
+      - "pnpm-lock.yaml"
+      - ".github/workflows/merrick-companion-ci.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "openclaw/plugins/merrick-companion/**"
+      - "pnpm-lock.yaml"
+      - ".github/workflows/merrick-companion-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24.16.0"
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --dir openclaw/plugins/merrick-companion run build
+      - run: pnpm --dir openclaw/plugins/merrick-companion run plugin:validate
+      - run: pnpm --dir openclaw/plugins/merrick-companion test
+

@@ -1,0 +1,33 @@
+{
+  "id": "merrick-companion",
+  "name": "MERRICK Companion",
+  "description": "Reports whether a local MERRICK macOS companion is ready. No desktop action is performed.",
+  "version": "0.1.0",
+  "categories": [
+    "developer-tools"
+  ],
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "bridgeUrl": {
+        "type": "string",
+        "maxLength": 200,
+        "description": "MERRICK's loopback bridge URL. Only http://127.0.0.1 is accepted."
+      }
+    },
+    "additionalProperties": false
+  },
+  "activation": {
+    "onStartup": true
+  },
+  "contracts": {
+    "tools": [
+      "merrick_desktop_status"
+    ]
+  },
+  "toolMetadata": {
+    "merrick_desktop_status": {
+      "optional": true
+    }
+  }
+}

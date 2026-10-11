@@ -1,0 +1,27 @@
+name: Publish MERRICK Companion
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Validate and preview without publishing
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    uses: openclaw/clawhub/.github/workflows/package-publish.yml@main
+    with:
+      source: ShengningZ/MERRICK
+      source_path: openclaw/plugins/merrick-companion
+      owner: SimonCheungAI
+      family: code-plugin
+      dry_run: ${{ inputs.dry_run }}
+      wait_for_publication: true
+      topics: merrick,macos,desktop-assistant
+      changelog: Initial public release with a read-only local MERRICK health check.
