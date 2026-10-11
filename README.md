@@ -44,10 +44,25 @@ original selected Merrick reference. Edge voices remain fallback-only.
 Switching also updates recognition and clears any in-flight reply so
 old-language audio cannot leak into the new conversation.
 
+## OpenClaw plugin
+
+Install the read-only [MERRICK Companion on ClawHub](https://clawhub.ai/simoncheungai/plugins/merrick-companion)
+to let an existing OpenClaw installation check whether the local MERRICK macOS
+host is available:
+
+```sh
+openclaw plugins install clawhub:@simoncheungai/merrick-companion
+```
+
+The auditable plugin source is under
+[`openclaw/plugins/merrick-companion`](openclaw/plugins/merrick-companion).
+It only calls MERRICK's loopback status endpoint and does not control the
+desktop, inspect files or screens, read credentials, or contact remote hosts.
+
 ## Install and authorize OpenClaw
 
 ```sh
-git clone https://github.com/SimonCheungAI/MERRICK.git
+git clone https://github.com/ShengningZ/MERRICK.git
 cd MERRICK
 uv sync
 ./scripts/setup-openclaw.sh
