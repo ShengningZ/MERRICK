@@ -1,6 +1,6 @@
 {
   "name": "@simoncheungai/merrick-companion",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Read-only OpenClaw companion for checking a local MERRICK macOS host.",
   "license": "MIT",
   "homepage": "https://getmerrick.com/",
